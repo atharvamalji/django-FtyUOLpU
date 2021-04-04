@@ -1,0 +1,96 @@
+<div class="form-box m-2 p-2 border border-gray-300 bg-gray-50 shadow rounded-md flex flex-col">
+    <div class="p-2 mb-2">
+      <h1 class="text-2xl font-bold">Occupational Details</h1>
+      <p class="text-sm">Let's fill your occupational details</p>
+    </div>
+    <div class="space-x-3 flex flex-row p-2">
+      <div class="flex space-x-3">
+        <label class="w-40" for="">proposer's occupation</label>
+        <div class="border border-gray-300 bg-gray-200 w-max px-3 rounded-md">
+          <select class="bg-gray-200 w-44" type="text" id="sel_occupation">
+            <option value="S">Select</option>
+            <option value="G">Government Service</option>
+            <option value="P">Private Service</option>
+            <option value="B">Business</option>
+            <option value="O">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex space-x-3 flex-1">
+        <label class="" for="">proposer's approximate annual income</label>
+        <div class="border border-gray-300 bg-gray-200 w-max px-3 rounded-md flex-1">
+          <input class="bg-gray-200" type="text" placeholder="first name" />
+        </div>
+      </div>
+    </div>
+    <div class="p-2" id="alert_occupation">
+      <p class="text-sm font-bold text-red-400">please select an occupation to continue the form below.</p>
+    </div>
+    <div class="j-section hidden" id="j_section">
+      <div class="flex p-2 flex-row space-x-3">
+        <div class="flex flex-1 space-x-3">
+          <label class="" for="">employer's name</label>
+          <div class="border border-gray-300 bg-gray-200 w-max px-3 flex-1 rounded-md">
+            <input class="bg-gray-200 flex-1" type="text" placeholder="Eg. LIC India" />
+          </div>
+        </div>
+        <div class="flex space-x-3">
+          <label class="" for="">job period</label>
+          <div class="border border-gray-300 bg-gray-200 w-max px-3 flex rounded-md">
+            <input class="bg-gray-200 w-12" type="text" placeholder="Eg. 15" />
+            <p class="text-gray-400">years</p>
+          </div>
+        </div>
+        <div class="flex flex-1 space-x-3">
+          <label class="" for="">job post</label>
+          <div class="border border-gray-300 bg-gray-200 px-3 flex-1 rounded-md">
+            <input class="bg-gray-200 flex-1" type="text" placeholder="Eg. Development Officer" />
+          </div>
+        </div>
+      </div>
+      <div class="p-2">
+                <div class="flex space-x-3">
+          <label class="w-40" for="">proposer's address</label>
+          <div class="border border-gray-300 bg-gray-200 w-max px-3 rounded-md flex-1 flex flex-col">
+            <input class="bg-gray-200" type="text" placeholder="address line 1" />
+            <input class="bg-gray-200" type="text" placeholder="address line 2" />
+            <input class="bg-gray-200" type="text" placeholder="address line 3" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="b-section hidden" id="b_section">
+       <div class="flex p-2 flex-row space-x-3">
+      <div class="flex flex-1 space-x-3">
+        <label class="" for="">business type</label>
+        <div class="border border-gray-300 bg-gray-200 w-max px-3 flex flex-1 rounded-md">
+          <input class="bg-gray-200 flex-1" type="text" placeholder="Eg. Construction Contractor" />
+        </div>
+      </div>
+      <div class="flex flex-1 space-x-3">
+        <label class="" for="">business name</label>
+        <div class="border border-gray-300 bg-gray-200 px-3 flex flex-1 rounded-md">
+          <input class="bg-gray-200 flex-1" type="text" placeholder="Eg. Yuva " />
+        </div>
+      </div>
+      <div class="flex space-x-3">
+        <label class="" for="">business period</label>
+        <div class="border border-gray-300 bg-gray-200 w-max px-3 flex rounded-md">
+          <input class="bg-gray-200 w-12" type="text" placeholder="Eg. 15" />
+          <p class="text-gray-400">years</p>
+        </div>
+      </div>
+      
+    </div>
+    <div class="p-2">
+              <div class="flex space-x-3">
+        <label class="w-40" for="">business address</label>
+        <div class="border border-gray-300 bg-gray-200 w-max px-3 rounded-md flex-1 flex flex-col">
+          <input class="bg-gray-200" type="text" placeholder="address line 1" />
+          <input class="bg-gray-200" type="text" placeholder="address line 2" />
+          <input class="bg-gray-200" type="text" placeholder="address line 3" />
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>

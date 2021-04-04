@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>app</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/frontend.css' %}">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+</head>
+<body>
+    <div class="m-2 p-2 border bg-gray-200 space-y-2">
+        <h1 class="text-xl">Add New Policy</h1>
+        <button class="p-2 px-4 focus:outline-none bg-blue-600 text-white" id="modal-toggle">Add Policy</button>
+    </div>
+
+    <!--Test Add Members Table-->
+    <div class="m-2 p-2 bg-gray-50 border border-gray-400 shadow space-y-2">
+        <button class="text-sm p-2 bg-gray-200 border border-gray-400" id="btn_add_member">Add Member</button>
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="p-1 px-3 border border-gray-400" rowspan="2">member</td>
+                        <td class="p-1 px-3 border border-gray-400" rowspan="2">status</td>
+                        <td class="p-1 px-3 border border-gray-400" rowspan="2">age</td>
+                        <td class="p-1 px-3 border border-gray-400" colspan="2">if dead</td>
+                        <td class="p-1 px-3 border border-gray-400" rowspan="2">actions</td>
+                    </tr>
+                    <tr>
+                        <td class="p-1 px-3 border border-gray-400">age at death</td>
+                        <td class="p-1 px-3 border border-gray-400">cause of death</td>
+                    </tr>
+                    <tr>
+                        <td class="p-1 px-3 border border-gray-400 w-40">Father</td>
+                        <td class="p-1 border border-gray-400">
+                        <select class="px-3 w-full border border-gray-300 bg-gray-200 rounded-md" name="" id="">
+                        <option>Select</option>
+                        <option>Alive</option>
+                        <option>Dead</option>
+                        </select>
+                        </td>
+                        <td class="p-1 border border-gray-400"><input class="px-3 w-full border border-gray-300 bg-gray-200 rounded-md" type="number"></td>
+                        <td class="p-1 border border-gray-400"><input class="px-3 w-full border border-gray-300 bg-gray-200 rounded-md" type="number"></td>
+                        <td class="p-1 border border-gray-400"><input class="px-3 w-full border border-gray-300 bg-gray-200 rounded-md" type="number"></td>
+                        <td rowspan="2" class="p-1 border border-gray-400 bg-gray-100"></td>
+                    </tr>
+                    <tr>
+                        <td class="p-1 px-3 border border-gray-400 w-40">Mother</td>
+                        <td class="p-1 border border-gray-400">
+                        <select class="px-3 w-full border border-gray-300 bg-gray-200 rounded-md" name="" id="">
+                        <option>Select</option>
+                        <option>Alive</option>
+                        <option>Dead</option>
+                        </select>
+                        </td>
+                        <td class="p-1 border border-gray-400"><input class="px-3 w-full border border-gray-300 bg-gray-200 rounded-md" type="number"></td>
+                        <td class="p-1 border border-gray-400"><input class="px-3 w-full border border-gray-300 bg-gray-200 rounded-md" type="number"></td>
+                        <td class="p-1 border border-gray-400"><input class="px-3 w-full border border-gray-300 bg-gray-200 rounded-md" type="number"></td>
+                    </tr>   
+                    <tr class="hidden" id="edited_row">
+                        <td class="p-1 border border-gray-400">
+                            <select class="px-3 w-full border border-gray-300 bg-gray-200 rounded-md w-40" name="" id="mbr_type">
+                                <option value="def">Select</option>
+                                <option value="brtr">Brother</option>
+                                <option value="sstr">Sister</option>
+                                <option value="spse">Spouse</option>
+                                <option value="sn">Son</option>
+                                <option value="dgtr">Daughter</option>
+                                <option value="gdtr">Grandaughter</option>
+                                <option value="gsn">Grandson</option>
+                                <option value="gmtr">Grandmother</option>
+                                <option value="gftr">Grandfather</option>
+                                <option value="fil">Father-in-law</option>
+                                <option value="mil">Mother-in-law</option>
+                                <option value="bil">Brother-in-law</option>
+                                <option value="sil">Sister-in-law</option>
+                            </select>
+                        </td>
+                        <td class="p-1 border border-gray-400">
+                            <select class="px-3 w-full border border-gray-300 bg-gray-200 rounded-md" name="" id="mbr_status">
+                                <option value="def">Select</option>
+                                <option value="1">Alive</option>
+                                <option value="0">Dead</option>
+                            </select>
+                        </td>
+                        <td class="p-1 border border-gray-400">
+                            <input class="px-3 w-full border border-gray-200 bg-gray-100 rounded-md td-alive" disabled type="number" />
+                        </td>
+                        <td class="p-1 border border-gray-400">
+                            <input class="px-3 w-full border border-gray-200 bg-gray-100 rounded-md td-dead" disabled type="number" />
+                        </td>
+                        <td class="p-1 border border-gray-400">
+                            <input class="px-3 w-full border border-gray-200 bg-gray-100 rounded-md td-dead" disabled type="text" />
+                        </td>
+                        <td class="border border-gray-400" id="add_member">
+                            <div class="px-1 m-auto flex space-x-2 w-max">
+                                <button class="w-7 h-7 p-2 hover:bg-gray-300 rounded-full" id="close_edited_row">
+                                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash" role="img"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                                        class="svg-inline--fa fa-trash fa-w-14 fa-2x">
+                                        <path fill="currentColor"
+                                            d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"
+                                            class=""></path>
+                                    </svg>
+                                </button>
+                                <button class="w-7 h-7 p-2 hover:bg-gray-300 rounded-full hidden">
+                                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pen" role="img"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                        class="svg-inline--fa fa-pen fa-w-16 fa-2x">
+                                        <path fill="currentColor"
+                                            d="M290.74 93.24l128.02 128.02-277.99 277.99-114.14 12.6C11.35 513.54-1.56 500.62.14 485.34l12.7-114.22 277.9-277.88zm207.2-19.06l-60.11-60.11c-18.75-18.75-49.16-18.75-67.91 0l-56.55 56.55 128.02 128.02 56.55-56.55c18.75-18.76 18.75-49.16 0-67.91z"
+                                            class=""></path>
+                                    </svg>
+                                </button>
+                                <button class="w-7 h-7 p-2 hover:bg-gray-300 rounded-full" id="add_edited_row">
+                                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                        class="svg-inline--fa fa-check fa-w-16 fa-2x">
+                                        <path fill="currentColor"
+                                            d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
+                                            class=""></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- MODALS -->
+    
+    
+    <div class="modal items-center" id="mdl_addPolicy">
+        <div class="p-1 m-auto w-max flex flex-col border border-gray-400 bg-gray-200 rounded-md shadow">
+            <div class="p-2 flex justify-between">
+                <p class="text-sm font-bold">Add New Policy</p>
+                <button class="w-4 h-4 rounded-full bg-red-500 glow flex items-center justify-center" id="form_close_btn">
+                    <div class="w-2">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x">
+                            <path fill="#fff"
+                                d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
+                                class=""></path>
+                        </svg>
+                    </div>
+                </button>
+            </div><!--titlebar-->
+            <div class="flex">
+                <div class="step m-2 p-2 space-y-1 flex-1 border border-gray-300 bg-gray-50 flex flex-col rounded-md shadow">
+                    <h1>Personal Details</h1>
+                    <div class="step-line border border-blue-500 h-1 bg-blue-500"></div>
+                </div>
+                <div class="step m-2 p-2 space-y-1 flex-1 border border-gray-300 bg-gray-50 flex flex-col rounded-md shadow">
+                    <h1>Occupational Details</h1>
+                    <div class="step-line border border-blue-500 h-1 bg-blue-500"></div>
+                </div>
+                <div class="step m-2 p-2 space-y-1 flex-1 border border-gray-300 bg-gray-50 flex flex-col rounded-md shadow">
+                    <h1>Nominee Details</h1>
+                    <div class="step-line border border-blue-500 h-1 bg-blue-500"></div>
+                </div>
+                <div class="step m-2 p-2 space-y-1 flex-1 border border-gray-300 bg-gray-50 flex flex-col rounded-md shadow">
+                    <h1>Upload Details</h1>
+                    <div class="step-line border border-blue-500 h-1 bg-blue-500"></div>
+                </div>
+                <div class="step m-2 p-2 space-y-1 flex-1 border border-gray-300 bg-gray-50 flex flex-col rounded-md shadow">
+                    <h1>Plan Details</h1>
+                    <div class="step-line border border-blue-500 h-1 bg-blue-500"></div>
+                </div>
+            </div><!--steps indicator-->
+            <form action="" method="POST" id="frm_addPolicy">
+                <div class="flex">
+                    <div class="tab flex flex-1 hidden">
+                        {% include 'dashboard/components/form_sections/personal_details.html' %}
+                    </div>
+                    <div class="tab flex flex-1 hidden">
+                        {% include 'dashboard/components/form_sections/occupation_details.html' %}
+                    </div>
+                    <div class="tab flex flex-1 hidden">
+                        {% include 'dashboard/components/form_sections/nominee_details.html' %}
+                    </div>
+                </div>
+            </form>
+            <div class="m-2 flex">
+                <button class="border border-gray-300 bg-gray-50 hover:border-blue-700 hover:bg-blue-500 hover:text-white p-3 flex-1 shadow-md rounded-md" id="modal-btn" onclick="nextPrevious(1)">Next</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/frontend.js' %}" defer></script>
+    <script src="{% static 'js/mpform.js' %}"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+</body>
+</html>
